@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>딥코 AI & 융합 과학 통합 커리큘럼</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Theme Colors */
+            --color-app: #3b82f6;    /* Blue - Track 1 */
+            --color-phy: #10b981;    /* Green - Track 2 */
+            --color-bot: #f97316;    /* Orange - Track 3 */
+            --color-sci: #8b5cf6;    /* Purple - Track 4 */
+            --color-sci-dark: #6d28d9;
+            --color-dark: #0f172a;   /* Dark Background */
+            --color-gray: #334155;   /* Text Color */
+        }
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #cbd5e1;
+            margin: 0;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            color: var(--color-gray);
+        }
+        
+        /* Layout Configuration */
+        .page {
+            width: 100%;
+            max-width: 210mm; /* PC에서는 A4 너비 유지 */
+            min-height: 297mm;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Common Footer */
+        .footer {
+            margin-top: auto;
+            background: #f8fafc;
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        .page-num { font-weight: 700; color: #cbd5e1; }
+
+        /* ================= PAGE 1: COVER ================= */
+        .cover-hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .brand-name {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .cover-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .main-message-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 90%;
+            margin-bottom: 40px;
+        }
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #f1f5f9;
+            font-weight: 300;
+        }
+        .highlight-text {
+            color: #60a5fa;
+            font-weight: 700;
+        }
+
+        .tools-intro {
+            flex: 1;
+            padding: 20px 40px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .intro-card {
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        
+        .intro-card.app { background: #eff6ff; border-color: #bfdbfe; }
+        .intro-card.phy { background: #ecfdf5; border-color: #a7f3d0; }
+        .intro-card.bot { background: #fff7ed; border-color: #fed7aa; }
+        .intro-card.sci { background: #f5f3ff; border-color: #ddd6fe; }
+
+        .card-icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .card-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; }
+        .card-desc { font-size: 0.9rem; line-height: 1.4; color: #475569; }
+
+        .real-ai-badge {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* ================= TRACK 4 INTRO PAGE ================= */
+        .sci-intro-bg {
+            background: linear-gradient(135deg, var(--color-sci-dark) 0%, #0f766e 100%);
+            color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px;
+        }
+        .collab-text {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+        .sci-main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #fff, #ccfbf1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sci-desc-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 80%;
+        }
+        .sci-desc-text { font-size: 1.2rem; line-height: 1.8; color: #f1f5f9; }
+        .sci-icons {
+            display: flex; gap: 30px; margin-top: 50px; font-size: 2.5rem; align-items: center; opacity: 0.9;
+        }
+
+        /* ================= CURRICULUM LAYOUT ================= */
+        .track-header {
+            padding: 50px 40px;
+            color: white;
+            position: relative;
+        }
+        .track-header.app { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .track-header.phy { background: linear-gradient(135deg, #059669, #047857); }
+        .track-header.bot { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .track-header.sci { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+        .track-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .track-title { font-size: 2.4rem; font-weight: 800; margin: 0 0 10px 0; line-height: 1.2; }
+        .track-tools { font-size: 1.1rem; opacity: 0.95; display: flex; align-items: center; gap: 10px; margin-top: 15px; font-weight: 300; }
+
+        .curriculum-body {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            flex: 1;
+        }
+
+        .course-section {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        .course-title { font-size: 1.25rem; font-weight: 800; color: #1e293b; }
+        
+        .session-badge {
+            font-size: 0.85rem;
+            padding: 5px 12px;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+        }
+        .app .session-badge { background: var(--color-app); }
+        .phy .session-badge { background: var(--color-phy); }
+        .bot .session-badge { background: var(--color-bot); }
+        .sci .session-badge { background: var(--color-sci); }
+
+        /* Grid Layouts */
+        .module-grid { display: grid; gap: 15px 25px; }
+        .grid-4 { grid-template-columns: 1fr; }
+        .grid-8 { grid-template-columns: 1fr 1fr; }
+        
+        .module-item {
+            display: flex;
+            flex-direction: column;
+            padding: 5px 0;
+            border-bottom: 1px dashed #f1f5f9;
+        }
+        .module-header { display: flex; align-items: baseline; margin-bottom: 4px; }
+        
+        .module-num {
+            font-weight: 800; margin-right: 8px; min-width: 30px; text-align: right; font-size: 0.9rem;
+        }
+        .app .module-num { color: var(--color-app); }
+        .phy .module-num { color: var(--color-phy); }
+        .bot .module-num { color: var(--color-bot); }
+        .sci .module-num { color: var(--color-sci); }
+        
+        .module-text { color: #334155; font-weight: 700; font-size: 0.95rem; }
+        .module-subtext {
+            padding-left: 38px; font-size: 0.85rem; color: #64748b; line-height: 1.4; margin: 0;
+        }
+        .module-subtext li { list-style-type: none; position: relative; padding-left: 10px; }
+        .module-subtext li::before { content: "-"; position: absolute; left: 0; color: #94a3b8; }
+
+        /* --- MOBILE RESPONSIVE STYLES --- */
+        @media screen and (max-width: 768px) {
+            body { padding: 0; gap: 20px; }
+            .page {
+                width: 100%;
+                min-height: auto;
+                box-shadow: none;
+                border-bottom: 8px solid #cbd5e1;
+            }
+            .cover-hero { padding: 40px 20px; }
+            .cover-title { font-size: 2.2rem; }
+            .tools-intro {
+                grid-template-columns: 1fr; /* 1 Column for Cards */
+                padding: 20px;
+            }
+            .track-header { padding: 30px 20px; }
+            .track-title { font-size: 1.8rem; }
+            .curriculum-body { padding: 20px; }
+            .grid-8 { grid-template-columns: 1fr; /* 1 Column Grid */ }
+            .sci-intro-bg { padding: 40px 20px; }
+            .sci-main-title { font-size: 2rem; }
+            .sci-desc-box { max-width: 100%; padding: 20px; }
+            .footer {
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px;
+                text-align: center;
+            }
+        }
+
+        /* Print Settings */
+        @media print {
+            body { background: none; padding: 0; gap: 0; }
+            .page { width: 100%; max-width: 100%; height: auto; box-shadow: none; break-after: page; border-bottom: none; }
+            .track-header, .cover-hero, .sci-intro-bg, .intro-card { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            /* Hide non-printable elements if needed */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= PAGE 1: COVER ================= -->
+    <div class="page">
+        <div class="cover-hero">
+            <div class="brand-name">딥코 에듀케이션</div>
+            <h1 class="cover-title">All-in-One<br>AI 교육 토탈 솔루션</h1>
+            <div class="main-message-box">
+                <p class="message-text">
+                    모델 생성부터 AI 앱 개발, 피지컬 AI까지<br>
+                    직접 보고 만지고 만들면서 배우는 <strong>인공지능 원리</strong>.<br><br>
+                    지능형 과학실의 강자 <span class="highlight-text">이지메이커</span>와 만나<br>
+                    <strong>AI 융합 과학</strong>까지 실현합니다.
+                </p>
+            </div>
+            <div class="real-ai-badge">진짜 인공지능 교육, 딥코</div>
+        </div>
+
+        <div class="tools-intro">
+            <div class="intro-card app">
+                <i class="fas fa-laptop-code card-icon" style="color: var(--color-app);"></i>
+                <div class="card-title" style="color: var(--color-app);">Track 1. AI 앱 메이커</div>
+                <div class="card-desc"><strong>딥코 스튜디오</strong>를 활용하여<br>누구나 쉽게 만드는 나만의 AI 앱</div>
+            </div>
+            <div class="intro-card phy">
+                <i class="fas fa-microchip card-icon" style="color: var(--color-phy);"></i>
+                <div class="card-title" style="color: var(--color-phy);">Track 2. 피지컬 AI</div>
+                <div class="card-desc"><strong>딥코 보드와 딥코 보드</strong>를 활용한<br>피지컬 AI의 핵심 원리</div>
+            </div>
+            <div class="intro-card bot">
+                <i class="fas fa-robot card-icon" style="color: var(--color-bot);"></i>
+                <div class="card-title" style="color: var(--color-bot);">Track 3. AI 로봇</div>
+                <div class="card-desc"><strong>딥코봇</strong>으로 경험하는<br>데이터 수집부터 자율주행의 모든 것</div>
+            </div>
+            <div class="intro-card sci">
+                <i class="fas fa-flask card-icon" style="color: var(--color-sci);"></i>
+                <div class="card-title" style="color: var(--color-sci);">Track 4. AI 융합 과학</div>
+                <div class="card-desc"><strong>딥코 보드 + 이지메이커 쉴드 + 이지메이커 센서</strong><br>로 탐구하고 예측하는 지능형 과학 실험</div>
+            </div>
+        </div>
+        <div class="footer">
+            <span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span>
+            <span class="page-num">01 / 10</span>
+        </div>
+    </div>
+
+    <!-- ================= PAGE 2: TRACK 1 (4, 8) ================= -->
+    <div class="page app">
+        <div class="track-header app">
+            <div class="track-label">Track 1. AI 앱 메이커</div>
+            <h2 class="track-title">딥코 스튜디오 활용 과정</h2>
+            <div class="track-tools"><i class="fas fa-check-circle"></i> SW 중심 교육 (노코드 플랫폼)</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section">
+                <div class="section-header"><div class="course-title">나만의 AI 앱 만들기</div><span class="session-badge">4차시</span></div>
+                <div class="module-grid grid-4">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">AI 모델링 도구 기초 및 데이터 분석</span></div><ul class="module-subtext"><li>AI 모델러 기초 사용법 익히기</li><li>수치/이미지 데이터 분석 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">이미지 분석: 가위바위보 앱 제작</span></div><ul class="module-subtext"><li>이미지 분류 모델 학습 원리 이해</li><li>가위바위보 대결 앱 기능 구현</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">데이터 분석: 건강 관리 앱 제작</span></div><ul class="module-subtext"><li>건강 데이터 패턴 분석 및 모델링</li><li>비만도 분석 앱 UI/UX 설계</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">나만의 융합 AI 앱 기획 및 완성</span></div><ul class="module-subtext"><li>다중 모델 활용 앱 아이디어 구상</li><li>나만의 AI 앱 최종 발표회</li></ul></div>
+                </div>
+            </div>
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">직접 만들면서 배우는 인공지능 원리</div><span class="session-badge">8차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">인공지능 개요와 머신러닝</span></div><ul class="module-subtext"><li>AI 발전 역사와 정의</li><li>머신러닝 알고리즘 이해</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">딥러닝과 AI 모델링 기초</span></div><ul class="module-subtext"><li>딥러닝 신경망 구조 학습</li><li>딥코 스튜디오 모델링 기초</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">반려동물 감정 분석 앱 실습</span></div><ul class="module-subtext"><li>감정 분류 모델 데이터 수집</li><li>감정 분석 앱 제작 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">말하는 MP3 플레이어 (TTS)</span></div><ul class="module-subtext"><li>음성 합성(TTS) 기술 이해</li><li>오디오 생성 AI 활용 앱</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">AI 가위바위보 게임 앱</span></div><ul class="module-subtext"><li>컴퓨터 비전 기술의 이해</li><li>동작 인식 게임 앱 구현</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">비만도 분석 건강 앱</span></div><ul class="module-subtext"><li>공공데이터 활용의 중요성</li><li>데이터 기반 건강 앱 제작</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">음식/건강 융합 앱 기획</span></div><ul class="module-subtext"><li>다중 모델(이미지+데이터) 설계</li><li>융합 앱 아이디어 구체화</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">최종 프로젝트 구현 및 발표</span></div><ul class="module-subtext"><li>팀별/개인별 프로젝트 완성</li><li>최종 성과 공유 및 피드백</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">02 / 10</span></div>
+    </div>
+
+    <!-- ================= PAGE 3: TRACK 1 (16) ================= -->
+    <div class="page app">
+        <div class="track-header app">
+            <div class="track-label">Track 1. AI 앱 메이커</div>
+            <h2 class="track-title">우리 마을 문제 해결을 위한 AI 융합 프로젝트</h2>
+            <div class="track-tools"><i class="fas fa-check-circle"></i> 16차시 심화 과정</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">커리큘럼 상세</div><span class="session-badge">16차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">인공지능의 이해와 미래</span></div><ul class="module-subtext"><li>AI 최신 트렌드 파악</li><li>미래 사회 변화 예측</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">머신러닝의 세계</span></div><ul class="module-subtext"><li>지도/비지도 학습 비교</li><li>다양한 학습 알고리즘 체험</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">딥러닝과 신경망 원리</span></div><ul class="module-subtext"><li>인공신경망 작동 원리</li><li>딥러닝 모델 구조 이해</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">컴퓨터 비전과 CNN 이해</span></div><ul class="module-subtext"><li>이미지 처리 기술(CNN)</li><li>비전 AI 활용 사례 분석</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">생성형 AI와 인공지능 윤리</span></div><ul class="module-subtext"><li>생성형 AI 기술의 이해</li><li>올바른 AI 윤리 의식 함양</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">AI 모델러 데이터 처리 마스터</span></div><ul class="module-subtext"><li>데이터 전처리 기법 심화</li><li>모델 성능 최적화 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">첫 AI 앱: 감정 분석 만들기</span></div><ul class="module-subtext"><li>감정 데이터 라벨링</li><li>감정 인식 AI 모델 생성</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">말하는 MP3 플레이어 (TTS)</span></div><ul class="module-subtext"><li>음성 합성(TTS) 기술 이해</li><li>오디오 생성 AI 활용 앱</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">9강</span><span class="module-text">스스로 폭탄을 피하는 게임 앱 만들기</span></div><ul class="module-subtext"><li>폭탄 분류 모델 데이터 수집 및 모델 생성</li><li>폭탄 피하기 앱 제작 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">10강</span><span class="module-text">데이터 기반 분석 앱 제작</span></div><ul class="module-subtext"><li>복잡한 데이터 패턴 분석</li><li>인사이트 도출 앱 구현</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">11강</span><span class="module-text">음식 분석 앱 프로젝트 (1)</span></div><ul class="module-subtext"><li>음식 이미지 분류 모델 학습</li><li>앱 UI/UX 프로토타입 설계</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">12강</span><span class="module-text">음식 분석 앱 프로젝트 (2)</span></div><ul class="module-subtext"><li>영양 데이터 분석 모델 통합</li><li>최종 앱 기능 구현 및 테스트</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">13강</span><span class="module-text">사회 문제 해결 융합 앱 기획</span></div><ul class="module-subtext"><li>지역 사회 문제 정의하기</li><li>AI 해결 솔루션 아이디어</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">14강</span><span class="module-text">나만의 AI 앱 프로젝트 (1)</span></div><ul class="module-subtext"><li>개별 프로젝트 주제 선정</li><li>데이터 수집 및 모델 학습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">15강</span><span class="module-text">나만의 AI 앱 프로젝트 (2)</span></div><ul class="module-subtext"><li>앱 프로그래밍 및 디버깅</li><li>프로젝트 완성도 높이기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">16강</span><span class="module-text">최종 성과 발표회</span></div><ul class="module-subtext"><li>프로젝트 시연 및 발표</li><li>동료 평가 및 피드백</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">03 / 10</span></div>
+    </div>
+
+
+    <!-- ================= PAGE 4: TRACK 2 (4, 8) ================= -->
+    <div class="page phy">
+        <div class="track-header phy">
+            <div class="track-label">Track 2. 피지컬 AI</div>
+            <h2 class="track-title">딥코 보드 활용 과정</h2>
+            <div class="track-tools"><i class="fas fa-check-circle"></i> HW를 활용한 AI 융합 교육 (피지컬 AI)</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section">
+                <div class="section-header"><div class="course-title">나만의 피지컬 AI 만들기</div><span class="session-badge">4차시</span></div>
+                <div class="module-grid grid-4">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">피지컬 컴퓨팅 기초 및 센서 제어</span></div><ul class="module-subtext"><li>딥코 보드 및 센서 활용법</li><li>온습도 데이터 실시간 확인</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">액추에이터 구동: 자동 선풍기</span></div><ul class="module-subtext"><li>DC모터 제어 원리 이해</li><li>센서 연동 자동 선풍기 제작</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">스마트홈 프로젝트 (AI 연동)</span></div><ul class="module-subtext"><li>AI 모델과 하드웨어 연동</li><li>스마트 전등 제어 시스템</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">펫 급식기 프로젝트 (사물인식)</span></div><ul class="module-subtext"><li>사물 인식 AI 모델 활용</li><li>자동 급식기 프로토타입 제작</li></ul></div>
+                </div>
+            </div>
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">피지컬 AI로 만들며 배우는 인공지능 원리</div><span class="session-badge">8차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">피지컬 컴퓨팅 입문</span></div><ul class="module-subtext"><li>피지컬 컴퓨팅 개념 이해</li><li>기초 회로 및 코딩 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">스스로 작동하는 스마트 선풍기</span></div><ul class="module-subtext"><li>온습도 센서 제어</li><li>모터 속도 제어 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">초음파 센서와 경보 장치</span></div><ul class="module-subtext"><li>물체 감지 시 경고등 켜기</li><li>경고음 울리기 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">나만의 Y2K 카메라 만들기</span></div><ul class="module-subtext"><li>카메라 모듈 제어 기초</li><li>나만의 Y2K 카메라 만들기 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">스마트홈 통합 제어 실습</span></div><ul class="module-subtext"><li>통합 제어 시스템 설계</li><li>IoT 스마트홈 모델 제작</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">AI 펫 자동 급식기 제작</span></div><ul class="module-subtext"><li>객체 인식 AI 모델 적용</li><li>서보모터 제어 급식기 완성</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">날씨 맞춤 의상 추천 시스템</span></div><ul class="module-subtext"><li>날씨 공공 데이터 활용</li><li>상황별 의상 추천 로직</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">창의 프로젝트 및 발표</span></div><ul class="module-subtext"><li>자유 주제 창작물 제작</li><li>프로젝트 공유 및 발표</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">04 / 10</span></div>
+    </div>
+
+    <!-- ================= PAGE 5: TRACK 2 (16) ================= -->
+    <div class="page phy">
+        <div class="track-header phy">
+            <div class="track-label">Track 2. 피지컬 AI</div>
+            <h2 class="track-title">피지컬 AI와 함께 하는 AI 융합 프로젝트</h2>
+            <div class="track-tools"><i class="fas fa-check-circle"></i> 16차시 심화 과정</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">커리큘럼 상세</div><span class="session-badge">16차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">피지컬 컴퓨팅 하드웨어 개요</span></div><ul class="module-subtext"><li>입출력 장치 원리 이해</li><li>하드웨어 구성요소 파악</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">환경 감지 시스템 (온습도)</span></div><ul class="module-subtext"><li>환경 데이터 모니터링</li><li>데이터 시각화 기초</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">스마트 라이트 (조도/LED)</span></div><ul class="module-subtext"><li>조도 센서 활용 자동 제어</li><li>스마트 조명 시스템 제작</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">자동화 시스템 1 (선풍기)</span></div><ul class="module-subtext"><li>온도 감지 자동 선풍기</li><li>모터 속도 제어 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">자동화 시스템 2 (자동문)</span></div><ul class="module-subtext"><li>거리 감지 자동문 원리</li><li>서보모터 활용 도어 제어</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">스마트홈 통합 제어 실습</span></div><ul class="module-subtext"><li>IoT 센서 네트워크 구성</li><li>종합 스마트홈 제어</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">나만의 Y2K 카메라 만들기</span></div><ul class="module-subtext"><li>카메라 모듈 제어 기초</li><li>나만의 Y2K 카메라 만들기 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">초음파 센서 랜덤 게임기</span></div><ul class="module-subtext"><li>랜덤 함수 활용 게임 로직</li><li>인터랙티브 게임기 제작</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">9강</span><span class="module-text">피지컬 AI가 뭐예요?</span></div><ul class="module-subtext"><li>인공지능이 로봇 몸을 만나면?</li><li>센서로 느끼고 모터로 움직여요</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">10강</span><span class="module-text">펫 자동 급식기 프로젝트 (1)</span></div><ul class="module-subtext"><li>펫 인식 AI 모델 학습</li><li>급식기 기구부 설계</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">11강</span><span class="module-text">펫 자동 급식기 프로젝트 (2)</span></div><ul class="module-subtext"><li>AI 모델과 하드웨어 통합</li><li>자동 급식 시스템 완성</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">12강</span><span class="module-text">날씨 맞춤 코디 프로젝트 (1)</span></div><ul class="module-subtext"><li>기상 데이터 분석 모델링</li><li>추천 알고리즘 설계</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">13강</span><span class="module-text">날씨 맞춤 코디 프로젝트 (2)</span></div><ul class="module-subtext"><li>디스플레이 출력 구현</li><li>코디 추천 시스템 제작</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">14강</span><span class="module-text">스마트 식물돌봄 프로젝트 (1)</span></div><ul class="module-subtext"><li>식물 생육 환경 데이터 수집</li><li>스마트팜 시스템 기획</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">15강</span><span class="module-text">스마트 식물돌봄 프로젝트 (2)</span></div><ul class="module-subtext"><li>자동 급수 및 조명 제어</li><li>식물 관리 시스템 구축</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">16강</span><span class="module-text">최종 성과 발표회</span></div><ul class="module-subtext"><li>프로젝트 최종 시연</li><li>성과 공유 및 피드백</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">05 / 10</span></div>
+    </div>
+
+    <!-- ================= PAGE 6: TRACK 3 (4, 8) ================= -->
+    <div class="page bot">
+        <div class="track-header bot">
+            <div class="track-label">Track 3. AI 로봇</div>
+            <h2 class="track-title">딥코봇(DeepCo Bot) 활용 과정</h2>
+            <div class="track-tools"><i class="fas fa-check-circle"></i> IoT + 자율주행 + AI</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section">
+                <div class="section-header"><div class="course-title">AI 자율주행 체험 (데이터 수집)</div><span class="session-badge">4차시</span></div>
+                <div class="module-grid grid-4">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">딥코봇 기초와 주행 제어</span></div><ul class="module-subtext"><li>딥코봇 하드웨어 이해 및 수동 제어</li><li>키보드/앱을 활용한 주행 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">자율주행 데이터 수집하기</span></div><ul class="module-subtext"><li>카메라 뷰 확인 및 주행 데이터 수집</li><li>다양한 트랙에서의 이미지 데이터 확보</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">도로 인식 모델 학습 및 생성</span></div><ul class="module-subtext"><li>내부 SW를 활용한 주행 모델 학습</li><li>학습 결과 확인 및 모델 최적화</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">자율주행 실전 테스트</span></div><ul class="module-subtext"><li>AI 모델 탑재 및 자율주행 테스트</li><li>나만의 자율주행 자동차 미션 수행</li></ul></div>
+                </div>
+            </div>
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">데이터로 완성하는 자율주행</div><span class="session-badge">8차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">딥코봇과 피지컬 컴퓨팅</span></div><ul class="module-subtext"><li>딥코봇 구조 이해 및 구동 원리</li><li>LED 및 모터 기본 제어</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">카메라 비전과 주행 데이터</span></div><ul class="module-subtext"><li>로봇의 눈, 카메라 센서 이해</li><li>주행 데이터의 중요성 및 수집 방법</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">다양한 환경의 데이터 수집</span></div><ul class="module-subtext"><li>직선/곡선 코스 주행 데이터 확보</li><li>데이터 편향 방지 전략</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">도로 인식 모델 학습 및 생성</span></div><ul class="module-subtext"><li>내부 SW 활용 도로 인식 모델 생성</li><li>학습 모델의 정확도 평가</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">자율주행 기초 주행</span></div><ul class="module-subtext"><li>학습 모델 적용 자율주행 실습</li><li>기초 트랙 주행 테스트</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">모델 튜닝 및 주행 최적화</span></div><ul class="module-subtext"><li>주행 데이터 보완 및 모델 재학습</li><li>복합 코스 주행 안정화</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">장애물 감지 및 정지</span></div><ul class="module-subtext"><li>거리 센서 활용 장애물 회피</li><li>긴급 정지 로직 구현</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">자율주행 챌린지</span></div><ul class="module-subtext"><li>팀별 자율주행 기록 경쟁</li><li>최종 프로젝트 성과 발표</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">06 / 10</span></div>
+    </div>
+
+    <!-- ================= PAGE 7: TRACK 3 (16) ================= -->
+    <div class="page bot">
+        <div class="track-header bot">
+            <div class="track-label">Track 3. AI 로봇</div>
+            <h2 class="track-title">딥러닝 기반 자율주행 마스터</h2>
+            <div class="track-tools"><i class="fas fa-check-circle"></i> 16차시 심화 과정</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">커리큘럼 상세</div><span class="session-badge">16차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">딥코봇 시스템 및 개발 환경</span></div><ul class="module-subtext"><li>로봇 시스템 구성요소 이해</li><li>내부 SW 개발 환경 설정</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">모터 제어와 로봇 구동학</span></div><ul class="module-subtext"><li>DC모터 속도 및 방향 정밀 제어</li><li>로봇 이동 메커니즘 이해</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">IoT 센서 제어 (LED/부저)</span></div><ul class="module-subtext"><li>디지털/아날로그 입출력 실습</li><li>상태 알림 시스템 구현</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">거리 센서 활용 (장애물 감지)</span></div><ul class="module-subtext"><li>초음파 센서 데이터 처리</li><li>충돌 방지 알고리즘</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">카메라 비전과 영상 처리</span></div><ul class="module-subtext"><li>카메라 영상 데이터 구조</li><li>기초 이미지 처리 기법</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">좋은 데이터와 나쁜 데이터</span></div><ul class="module-subtext"><li>주행 데이터 품질의 중요성</li><li>데이터 정제 및 전처리 실습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">도로 인식 데이터 수집 전략</span></div><ul class="module-subtext"><li>다양한 조명/각도 데이터 확보</li><li>체계적인 데이터셋 구축</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">딥러닝 모델 학습 원리</span></div><ul class="module-subtext"><li>CNN 구조 및 특징 추출 원리</li><li>자율주행 모델 학습 프로세스</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">9강</span><span class="module-text">도로 인식 모델 학습 및 튜닝</span></div><ul class="module-subtext"><li>Epoch, Batch Size 등 파라미터 이해</li><li>최적의 주행 모델 생성</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">10강</span><span class="module-text">자율주행 실전 구현 (기초)</span></div><ul class="module-subtext"><li>실제 트랙에서의 모델 기반 주행</li><li>주행 안정성 및 성능 테스트</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">11강</span><span class="module-text">주행 데이터 분석 및 모델 개선</span></div><ul class="module-subtext"><li>주행 실패 원인 분석</li><li>데이터 증강 및 모델 재학습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">12강</span><span class="module-text">복합 트랙 및 교차로 주행</span></div><ul class="module-subtext"><li>복잡한 코스 주행 전략</li><li>교차로 판단 로직 구현</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">13강</span><span class="module-text">객체 감지 기초 (표지판 인식)</span></div><ul class="module-subtext"><li>비전 AI 활용 객체 감지 실습</li><li>정지 표지판 인식 및 제어</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">14강</span><span class="module-text">팀 프로젝트: 미션 트랙 설계</span></div><ul class="module-subtext"><li>팀별 주행 미션 기획</li><li>최적의 주행 전략 수립</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">15강</span><span class="module-text">자율주행 그랑프리 예선</span></div><ul class="module-subtext"><li>팀별 자율주행 경진대회</li><li>문제 해결 및 코드 최적화</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">16강</span><span class="module-text">자율주행 그랑프리 결선</span></div><ul class="module-subtext"><li>최종 결승 및 성과 발표</li><li>프로젝트 회고 및 피드백</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">07 / 10</span></div>
+    </div>
+
+    <!-- ================= PAGE 8: TRACK 4 INTRO ================= -->
+    <div class="page">
+        <div class="sci-intro-bg">
+            <p class="collab-text">딥코 ✕ 이지메이커</p>
+            <h1 class="sci-main-title">딥코와 이지메이커의 만남!<br>AI 융합 과학을 실현하다</h1>
+            <div class="sci-desc-box">
+                <p class="sci-desc-text">
+                    강력한 <strong>인공지능(딥코)</strong>과 창의적 <strong>메이커 교구(이지메이커)</strong>의 결합.<br>
+                    <strong>딥코 보드와 이지메이커 쉴드, 그리고 다양한 센서</strong>를 활용하여<br>
+                    데이터를 직접 수집하고 AI 모델을 만드는<br>
+                    진정한 <strong>탐구 중심 AI 융합 교육</strong>을 경험하세요.
+                </p>
+            </div>
+            <div class="sci-icons"><i class="fas fa-brain"></i><span style="font-size: 1.5rem;">✕</span><i class="fas fa-flask"></i></div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">08 / 10</span></div>
+    </div>
+
+    <!-- ================= PAGE 9: TRACK 4 (4, 8) ================= -->
+    <div class="page sci">
+        <div class="track-header sci">
+            <div class="track-label">Track 4. AI 융합 과학</div>
+            <h2 class="track-title">AI로 탐구하는 과학 원리</h2>
+            <div class="track-tools"><i class="fas fa-flask"></i> 딥코 보드 + 이지메이커 쉴드 + 센서 활용</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section">
+                <div class="section-header"><div class="course-title">AI로 탐구하는 과학 원리</div><span class="session-badge">4차시</span></div>
+                <div class="module-grid grid-4">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">똑똑한 과학 실험: 풍력 에너지</span></div><ul class="module-subtext"><li>딥코 보드와 이지메이커 쉴드 조립</li><li>날개 모양을 바꾸며 전압 데이터 확인</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">AI 풍력발전소: 전기 생산량 맞히기</span></div><ul class="module-subtext"><li>실험 데이터로 전기 생산량 예측 AI 만들기</li><li>가장 전기를 잘 만드는 날개 조건 찾기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">데이터 탐정: 날씨의 비밀 찾기</span></div><ul class="module-subtext"><li>온도, 습도 센서로 우리 교실 날씨 관측</li><li>그래프를 그려서 날씨의 변화 규칙 찾기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">AI 기상 캐스터: 비가 올까요?</span></div><ul class="module-subtext"><li>센서 값으로 비가 올지 예측하는 AI 만들기</li><li>나만의 스마트 기상 관측소 발표하기</li></ul></div>
+                </div>
+            </div>
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">데이터와 AI로 완성하는 과학 탐구</div><span class="session-badge">8차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">AI 과학 수사대 시작!</span></div><ul class="module-subtext"><li>과학 실험에서 데이터가 왜 중요할까?</li><li>딥코 보드와 이지메이커 친구들 만나기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">날씨를 느끼는 센서</span></div><ul class="module-subtext"><li>온도와 습도는 어떻게 잴까? (센서 원리)</li><li>교실과 운동장의 날씨 데이터 기록하기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">풍력 실험 I (날개 개수 바꾸기)</span></div><ul class="module-subtext"><li>날개를 많으면 전기가 더 많이 생길까?</li><li>실험 결과를 표와 그래프로 정리하기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">날씨 데이터의 비밀 찾기</span></div><ul class="module-subtext"><li>엉뚱한 데이터(이상한 값) 골라내기</li><li>온도가 높으면 습도는 어떨까? (규칙 찾기)</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">풍력 실험 II (날개 각도 바꾸기)</span></div><ul class="module-subtext"><li>날개를 뉘우면 어떻게 될까? (각도 조절)</li><li>전기를 가장 많이 만드는 최고의 각도 찾기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">프로젝트: AI 날씨 알리미</span></div><ul class="module-subtext"><li>"비가 올까요?" OX 퀴즈 푸는 AI 만들기</li><li>날씨에 따라 화면이 바뀌는 장치 만들기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">프로젝트: 똑똑한 풍력발전소</span></div><ul class="module-subtext"><li>발전량을 미리 맞히는 AI (숫자 예측) 만들기</li><li>에너지를 아껴주는 스마트 발전소 꾸미기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">우리들의 AI 과학 전시회</span></div><ul class="module-subtext"><li>내가 만든 AI 발명품 자랑하기</li><li>친구들의 작품 보고 칭찬하고 배우기</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">09 / 10</span></div>
+    </div>
+
+    <!-- ================= PAGE 10: TRACK 4 (16) ================= -->
+    <div class="page sci">
+        <div class="track-header sci">
+            <div class="track-label">Track 4. AI 융합 과학</div>
+            <h2 class="track-title">미래 과학자를 위한 AI 탐구 프로젝트</h2>
+            <div class="track-tools"><i class="fas fa-flask"></i> 16차시 심화 과정</div>
+        </div>
+        <div class="curriculum-body">
+            <div class="course-section" style="flex: 1;">
+                <div class="section-header"><div class="course-title">커리큘럼 상세</div><span class="session-badge">16차시</span></div>
+                <div class="module-grid grid-8">
+                    <div class="module-item"><div class="module-header"><span class="module-num">1강</span><span class="module-text">과학자가 되는 방법 (탐구 과정)</span></div><ul class="module-subtext"><li>가설 세우기와 실험 계획하기</li><li>AI를 활용한 데이터 분석의 장점</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">2강</span><span class="module-text">실험 도구 준비하기</span></div><ul class="module-subtext"><li>딥코 보드와 쉴드 연결하기</li><li>이지메이커 센서값 확인하기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">3강</span><span class="module-text">데이터를 그림으로 그리기</span></div><ul class="module-subtext"><li>숫자 데이터를 멋진 그래프로 바꾸기</li><li>데이터의 평균과 변화 알아보기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">4강</span><span class="module-text">바람의 힘, 풍력 발전</span></div><ul class="module-subtext"><li>깨끗한 에너지 풍력 발전 알아보기</li><li>무엇이 발전량을 바꿀까? (변수 찾기)</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">5강</span><span class="module-text">최고의 풍차를 찾아라!</span></div><ul class="module-subtext"><li>날개 개수와 각도를 바꿔가며 실험하기</li><li>전기가 제일 잘 만들어지는 때 찾기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">6강</span><span class="module-text">에너지 박사 AI 만들기</span></div><ul class="module-subtext"><li>날개 모양만 보고도 발전량을 맞히는 AI</li><li>AI가 알려주는 최적의 발전 조건</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">7강</span><span class="module-text">스마트 그리드 맛보기</span></div><ul class="module-subtext"><li>전기를 똑똑하게 나눠 쓰는 방법</li><li>남는 전기를 저장하고 관리하기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">8강</span><span class="module-text">중간 점검: 무엇을 알게 되었나요?</span></div><ul class="module-subtext"><li>지금까지 실험한 내용 친구들과 나누기</li><li>더 궁금한 점 찾아보기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">9강</span><span class="module-text">기후 위기와 데이터</span></div><ul class="module-subtext"><li>지구가 아파요: 기후 변화 알아보기</li><li>우리 동네 날씨 데이터 찾아보기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">10강</span><span class="module-text">나만의 기상청 만들기</span></div><ul class="module-subtext"><li>온도, 습도, 풍속 센서 연결</li><li>실시간으로 날씨 기록하기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">11강</span><span class="module-text">AI 예보관 (숫자와 종류 맞히기)</span></div><ul class="module-subtext"><li>비가 올지(O/X) 예측하는 AI 학습</li><li>내일 기온(숫자)을 맞히는 AI 학습</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">12강</span><span class="module-text">프로젝트: 말하는 날씨 로봇</span></div><ul class="module-subtext"><li>오늘의 날씨를 목소리로 알려주기</li><li>LCD 화면에 날씨 그림 띄우기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">13강</span><span class="module-text">종합 프로젝트: 친환경 도시 I</span></div><ul class="module-subtext"><li>에너지를 스스로 만드는 미래 도시 상상</li><li>풍력 발전소와 기상청 연결하기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">14강</span><span class="module-text">종합 프로젝트: 친환경 도시 II</span></div><ul class="module-subtext"><li>도시 모형 만들고 센서 설치하기</li><li>AI가 에너지를 관리하는 시스템 구현</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">15강</span><span class="module-text">종합 프로젝트: 잘 작동하나 확인</span></div><ul class="module-subtext"><li>오류를 찾아 고치고(디버깅) 완성도 높이기</li><li>도시가 잘 작동하는지 테스트하기</li></ul></div>
+                    <div class="module-item"><div class="module-header"><span class="module-num">16강</span><span class="module-text">최종 발표: 미래 과학자 축제</span></div><ul class="module-subtext"><li>우리가 만든 친환경 AI 도시 전시회</li><li>친구들에게 우리 모둠의 발견 소개하기</li></ul></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer"><span><strong>교육 문의</strong> &nbsp;|&nbsp; 1577-0111 &nbsp;|&nbsp; sales@deepco.co.kr</span><span class="page-num">10 / 10</span></div>
+    </div>
+
+</body>
+</html>
