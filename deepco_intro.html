@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep:Co - 진짜 인공지능 교육</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0d47a1; /* 딥코 딥블루 */
+            --accent-color: #1565c0;
+            --bg-color: #f4f6f8;
+            --text-main: #333;
+            --text-sub: #666;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px; /* 모바일 최적화 너비 */
+            background-color: var(--bg-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 헤더 영역 */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .logo-img {
+            max-width: 150px;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .sub-title {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        /* 링크 카드 영역 */
+        .link-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: flex-start;
+            border: 1px solid transparent;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .icon-box {
+            background-color: #e3f2fd;
+            color: var(--primary-color);
+            min-width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        /* 유튜브 아이콘 별도 색상 */
+        .youtube-icon {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        .content-box {
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            word-break: keep-all; /* 한글 줄바꿈 최적화 */
+        }
+
+        .arrow {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+
+        /* 푸터 */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            padding-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 class="main-title">Learn AI,<br>Unlock Creativity</h1>
+            <p class="tagline">쉽고 재미있게 원리를 배우며 창의력을 키우는 AI 학습</p>
+            <p class="sub-title">REAL AI CLASS 2.0 - 딥코</p>
+        </header>
+
+        <div class="link-list">
+            <a href="https://www.deepco.co.kr/" target="_blank" class="link-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <div class="content-box">
+                    <div class="card-title">딥코 공식 홈페이지 <i class="fa-solid fa-chevron-right arrow"></i></div>
+                    <div class="card-desc">진짜 인공지능 교육, 딥코에 대해 알아보세요!</div>
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/@DEEPCO_" target="_blank" class="link-card">
+                <div class="icon-box youtube-icon">
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+                <div class="content-box">
+                    <div class="card-title">딥코 Youtube 채널 <i class="fa-solid fa-chevron-right arrow"></i></div>
+                    <div class="card-desc">딥코의 활동 모습을 영상으로 만나보세요~!</div>
+                </div>
+            </a>
+
+            <a href="https://studio.deepco.co.kr" target="_blank" class="link-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="content-box">
+                    <div class="card-title">딥코 스튜디오 <i class="fa-solid fa-chevron-right arrow"></i></div>
+                    <div class="card-desc">모델생성, 앱 구현, 피지컬 AI까지! 인공지능 교육 토탈 솔루션</div>
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1Ftj35kmXHlVJlfONllXE3tnR5iMmlcpW/view?usp=sharing" target="_blank" class="link-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+                <div class="content-box">
+                    <div class="card-title">딥코 스튜디오 & 딥코봇 브로슈어 <i class="fa-solid fa-chevron-right arrow"></i></div>
+                    <div class="card-desc">딥코 스튜디오와 딥코봇 소개 자료</div>
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1ud56fpHaC4SvL4e2MGbreRK95hNTGPPh/view?usp=sharing" target="_blank" class="link-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <div class="content-box">
+                    <div class="card-title">딥코 보드 브로슈어 <i class="fa-solid fa-chevron-right arrow"></i></div>
+                    <div class="card-desc">내 손으로 만드는 피지컬 AI, 딥코 보드 소개 자료</div>
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/file/d/17ZIVMDp7jbCnjYqTOy73xkErqEXcx7d9/view?usp=sharing" target="_blank" class="link-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <div class="content-box">
+                    <div class="card-title">딥코 미니 브로슈어 <i class="fa-solid fa-chevron-right arrow"></i></div>
+                    <div class="card-desc">작지만 완벽한 AI자율주행, 딥코 미니 소개 자료</div>
+                </div>
+            </a>
+
+            <a href="https://kkujae.github.io/deepco/" target="_blank" class="link-card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div class="content-box">
+                    <div class="card-title">딥코 교육 커리큘럼 <i class="fa-solid fa-chevron-right arrow"></i></div>
+                    <div class="card-desc">목적, 대상, 시간에 따른 다양한 맞춤형 커리큘럼</div>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            &copy; 2025 DEEPCO. All rights reserved.
+        </footer>
+    </div>
+
+</body>
+</html>
